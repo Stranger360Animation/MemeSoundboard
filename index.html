@@ -10,13 +10,15 @@
 </head>
 <body>
   <canvas id="unity-canvas"></canvas>
+
   <script>
+    // Always point to your Build folder
     var buildUrl = "Build";
-    var loaderUrl = buildUrl + "/MemeSoundboard.loader.js"; // <-- this is the generated loader file
+    var loaderUrl = buildUrl + "/MemeSoundboard.loader.js";
   </script>
 
-  <!-- Load Unity loader -->
-  <script src="MemeSoundboard.loader.js"></script>
+  <!-- ✅ FIXED: load the loader script from Build folder -->
+  <script src="Build/MemeSoundboard.loader.js"></script>
 
   <script>
     createUnityInstance(document.querySelector("#unity-canvas"), {
@@ -27,11 +29,11 @@
       companyName: "Stranger Animation",
       productName: "Meme Soundboard",
       productVersion: "1.0",
-      decompressionFallback: true // this makes gzip/br work on GitHub Pages
+      decompressionFallback: true
     }).then((unityInstance) => {
-      console.log("Unity loaded successfully");
+      console.log("Unity loaded successfully ✅");
     }).catch((message) => {
-      console.error(message);
+      console.error("Unity failed ❌", message);
     });
   </script>
 </body>
